@@ -3,10 +3,10 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#0E71B3",
+      main: "#191919",
     },
     secondary: {
-      main: "#3699FF",
+      main: "#292929",
     },
     error: {
       main: "#F23F44",
@@ -16,7 +16,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Poppins", "sans-serif"].join(","),
+    fontFamily: ["Lexend Deca", "sans-serif"].join(","),
   },
 });
 
