@@ -1,4 +1,4 @@
-import { Stack, Grid, Box, useMediaQuery } from "@mui/material";
+import { Stack, Grid, Box, useMediaQuery, Typography } from "@mui/material";
 import Card from "./components/Card";
 import Form from "./components/Form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,11 +7,13 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { enqueueSnackbar } from "notistack";
 import LoadingButton from "@mui/lab/LoadingButton";
+import IconCompleted from "./assets/IconCompleted";
 
 const App = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
   const [focused, setFocused] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   const FormSchema = Yup.object()
     .shape({
@@ -24,7 +26,7 @@ const App = () => {
         .required("Year is required")
         .test(
           "",
-          "Invalid month",
+          "Invalid Year",
           (value) =>
             new Date().getFullYear() % 1000 < parseInt(value) &&
             30 > parseInt(value)
@@ -33,7 +35,7 @@ const App = () => {
         .required("Month is required")
         .test(
           "",
-          "invalid",
+          "Invalid month",
           (value) => parseInt(value) < 13 && parseInt(value) > 0
         ),
       cvc: Yup.string()
@@ -65,24 +67,28 @@ const App = () => {
   };
 
   const onSubmit = (values) => {
-    setLoading(true);
-    setTimeout(() => {
-      if (values) {
-        setLoading(true);
-        methods.reset({
-          name: "",
-          number: "",
-          mm: "",
-          yy: "",
-          cvc: "",
-        });
-        setLoading(false);
-        enqueueSnackbar("Cadastrado com sucesso", {
-          variant: "success",
-          style: { fontFamily: "sans-serif" },
-        });
-      }
-    }, 1000);
+    if (completed) {
+      methods.reset({
+        name: "",
+        number: "",
+        mm: "",
+        yy: "",
+        cvc: "",
+      });
+      setCompleted(false);
+    } else {
+      setLoading(true);
+      setTimeout(() => {
+        if (values) {
+          setLoading(false);
+          setCompleted(true);
+          enqueueSnackbar("Cadastrado com sucesso", {
+            variant: "success",
+            style: { fontFamily: "sans-serif" },
+          });
+        }
+      }, 1000);
+    }
   };
 
   return (
@@ -125,13 +131,32 @@ const App = () => {
         >
           <Stack alignItems="center" width="100%">
             <Box maxWidth="23rem" pt={{ xs: "6rem", lg: 0 }}>
-              <Form
-                methods={methods}
-                loading={loading}
-                handleOnFocus={handleOnFocus}
-                handleOnBlur={handleOnBlur}
-                onSubmit={onSubmit}
-              />
+              {!completed && (
+                <Form
+                  methods={methods}
+                  loading={loading}
+                  handleOnFocus={handleOnFocus}
+                  handleOnBlur={handleOnBlur}
+                  onSubmit={onSubmit}
+                />
+              )}
+              {completed && (
+                <Stack alignItems="center">
+                  <IconCompleted />
+                  <Typography
+                    color="primary"
+                    fontWeight="600"
+                    fontSize="2rem"
+                    letterSpacing="0.16em"
+                    mt="2rem"
+                  >
+                    THANK YOU!
+                  </Typography>
+                  <Typography color="#757575" mt="1rem">
+                    We've added your card details
+                  </Typography>
+                </Stack>
+              )}
             </Box>
           </Stack>
           <Stack alignItems="center" mt={{ xs: 0, lg: 4 }}>
@@ -141,10 +166,15 @@ const App = () => {
                 variant="contained"
                 size="large"
                 type="submit"
+                color="secondary"
                 fullWidth
-                sx={{ textTransform: "capitalize" }}
+                sx={{
+                  textTransform: "capitalize",
+                  fontSize: "1rem",
+                  py: "0.5rem",
+                }}
               >
-                Confirm
+                {completed ? "Continue" : "Confirm"}
               </LoadingButton>
             </Box>
           </Stack>

@@ -3,20 +3,30 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#191919",
+      main: "#600594",
     },
     secondary: {
-      main: "#292929",
+      main: "#2a0b3c",
     },
     error: {
-      main: "#F23F44",
+      main: "#ff5252",
     },
     success: {
       main: "#35C979",
     },
   },
   typography: {
-    fontFamily: ["Lexend Deca", "sans-serif"].join(","),
+    fontFamily: ["Space Grotesk", "sans-serif"].join(","),
+  },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: "#2a0b3c",
+          fontWeight: "600",
+        },
+      },
+    },
   },
 });
 

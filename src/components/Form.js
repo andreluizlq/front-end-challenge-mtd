@@ -21,7 +21,7 @@ const Form = ({ methods, handleOnFocus, handleOnBlur }) => {
                 placeholder="e.g. Jane Appleseed"
                 error={Boolean(error)}
                 helperText={error?.message}
-                inputProps={{ maxLength: 60 }}
+                inputProps={{ maxLength: 40 }}
               />
             )}
           />
@@ -49,7 +49,7 @@ const Form = ({ methods, handleOnFocus, handleOnBlur }) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <LabelFields title="EXP. DATE (MM/YY)" />
+          <LabelFields title="EXP.DATE (MM/YY)" />
           <Stack flexDirection="row">
             <Grid item xs={6} mr="0.75rem">
               <Controller

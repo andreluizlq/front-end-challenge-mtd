@@ -112,13 +112,8 @@ const InputForm = forwardRef(
           </Select>
         )}
         {error && (
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={0.3}
-            mt="0.646rem"
-          >
-            <InfoIcon color="error" sx={{ fontSize: "1rem" }} />
+          <Stack direction="row" spacing={0.3} mt="0.646rem">
+            <InfoIcon color="error" sx={{ fontSize: "1rem", mt: "1px" }} />
             <Typography variant="caption" color="error">
               {helperText}
             </Typography>

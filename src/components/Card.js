@@ -32,7 +32,6 @@ const Card = forwardRef(
                   <Typography
                     fontSize="1.6rem"
                     letterSpacing="0.2em"
-                    fontWeight="300"
                     mb="0.8rem"
                   >
                     {values.number ? values.number : "0000 0000 0000 0000"}
@@ -43,13 +42,14 @@ const Card = forwardRef(
                     alignItems="center"
                   >
                     <Typography
-                      fontWeight="300"
-                      fontSize="1rem"
                       textTransform="uppercase"
+                      noWrap
+                      letterSpacing="0.16em"
+                      pr="1rem"
                     >
                       {values.name ? values.name : "your name here"}
                     </Typography>
-                    <Typography fontWeight="300" fontSize="1rem">
+                    <Typography letterSpacing="0.2em">
                       {values.mm ? values.mm : "00"}/
                       {values.yy ? values.yy : "00"}
                     </Typography>
@@ -78,17 +78,12 @@ const Card = forwardRef(
                     borderRadius="4px"
                     sx={{ background: "#AAB5BE" }}
                   >
-                    <Typography
-                      mr="1rem"
-                      color="#fff"
-                      fontSize="1.1rem"
-                      fontWeight="300"
-                    >
+                    <Typography mr="1rem" color="#fff" letterSpacing="0.2em">
                       {values.cvc ? values.cvc : "000"}
                     </Typography>
                   </Stack>
                   <Stack alignItems="center" mt="1rem">
-                    <CodCard />
+                    <CodCard width="200" height="28" />
                   </Stack>
                 </Stack>
               </Stack>
@@ -126,8 +121,7 @@ const Card = forwardRef(
                   <Stack m="1rem">
                     <Typography
                       fontSize="1.3rem"
-                      letterSpacing="0.2em"
-                      fontWeight="300"
+                      letterSpacing="0.16em"
                       mb="0.8rem"
                     >
                       {values.number ? values.number : "0000 0000 0000 0000"}
@@ -141,10 +135,15 @@ const Card = forwardRef(
                         fontWeight="300"
                         fontSize="0.9rem"
                         textTransform="uppercase"
+                        letterSpacing="0.14em"
                       >
                         {values.name ? values.name : "your name here"}
                       </Typography>
-                      <Typography fontWeight="300" fontSize="0.9rem">
+                      <Typography
+                        fontWeight="300"
+                        fontSize="0.9rem"
+                        letterSpacing="0.14em"
+                      >
                         {values.mm ? values.mm : "00"}/
                         {values.yy ? values.yy : "00"}
                       </Typography>
@@ -179,12 +178,17 @@ const Card = forwardRef(
                       borderRadius="4px"
                       sx={{ background: "#AAB5BE" }}
                     >
-                      <Typography mr="1rem" color="#fff" fontWeight="300">
+                      <Typography
+                        mr="1rem"
+                        color="#fff"
+                        fontWeight="300"
+                        letterSpacing="0.2em"
+                      >
                         {values.cvc ? values.cvc : "000"}
                       </Typography>
                     </Stack>
-                    <Stack alignItems="center" mt="0.8rem">
-                      <CodCard />
+                    <Stack alignItems="center" mt="0.4rem">
+                      <CodCard width="160" height="22" />
                     </Stack>
                   </Stack>
                 </Stack>

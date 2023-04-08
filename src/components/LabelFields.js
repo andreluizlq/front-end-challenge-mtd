@@ -1,10 +1,16 @@
 import React from "react";
 import { Typography, Stack } from "@mui/material";
 
-const LabelFields = ({ title, required, sx }) => {
+const LabelFields = ({ title, sx }) => {
   return (
     <Stack direction="row" sx={sx}>
-      <Typography variant="body2" color="primary" fontWeight="600" mb="0.4rem">
+      <Typography
+        color="secondary"
+        fontWeight="600"
+        mb="0.4rem"
+        letterSpacing="0.1em"
+        fontSize="0.9rem"
+      >
         {title}
       </Typography>
     </Stack>
