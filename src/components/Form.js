@@ -51,7 +51,7 @@ const Form = ({ methods, handleOnFocus, handleOnBlur }) => {
         <Grid item xs={6}>
           <LabelFields title="EXP. DATE (MM/YY)" />
           <Stack flexDirection="row">
-            <Grid item xs={6} mr="12px">
+            <Grid item xs={6} mr="0.75rem">
               <Controller
                 name="mm"
                 control={methods.control}

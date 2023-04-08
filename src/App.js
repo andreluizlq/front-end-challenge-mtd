@@ -25,7 +25,9 @@ const App = () => {
         .test(
           "",
           "Invalid month",
-          (value) => new Date().getFullYear() % 1000 < parseInt(value)
+          (value) =>
+            new Date().getFullYear() % 1000 < parseInt(value) &&
+            30 > parseInt(value)
         ),
       mm: Yup.string()
         .required("Month is required")

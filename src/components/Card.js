@@ -30,7 +30,7 @@ const Card = forwardRef(
               >
                 <Stack m="1.5rem">
                   <Typography
-                    fontSize="27px"
+                    fontSize="1.6rem"
                     letterSpacing="0.2em"
                     fontWeight="300"
                     mb="0.8rem"
@@ -44,12 +44,12 @@ const Card = forwardRef(
                   >
                     <Typography
                       fontWeight="300"
-                      fontSize="16px"
+                      fontSize="1rem"
                       textTransform="uppercase"
                     >
                       {values.name ? values.name : "your name here"}
                     </Typography>
-                    <Typography fontWeight="300" fontSize="16px">
+                    <Typography fontWeight="300" fontSize="1rem">
                       {values.mm ? values.mm : "00"}/
                       {values.yy ? values.yy : "00"}
                     </Typography>
@@ -125,7 +125,7 @@ const Card = forwardRef(
                 >
                   <Stack m="1rem">
                     <Typography
-                      fontSize="21px"
+                      fontSize="1.3rem"
                       letterSpacing="0.2em"
                       fontWeight="300"
                       mb="0.8rem"
@@ -139,12 +139,12 @@ const Card = forwardRef(
                     >
                       <Typography
                         fontWeight="300"
-                        fontSize="14px"
+                        fontSize="0.9rem"
                         textTransform="uppercase"
                       >
                         {values.name ? values.name : "your name here"}
                       </Typography>
-                      <Typography fontWeight="300" fontSize="14px">
+                      <Typography fontWeight="300" fontSize="0.9rem">
                         {values.mm ? values.mm : "00"}/
                         {values.yy ? values.yy : "00"}
                       </Typography>
@@ -174,7 +174,7 @@ const Card = forwardRef(
                     <Stack
                       alignItems="end"
                       mx="3rem"
-                      my="0.8rem"
+                      my="0.9rem"
                       p="0.2rem"
                       borderRadius="4px"
                       sx={{ background: "#AAB5BE" }}
