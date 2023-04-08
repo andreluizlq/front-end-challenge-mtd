@@ -21,7 +21,6 @@ const App = () => {
       number: Yup.string()
         .min(19, "Card number requires 16 digits.")
         .required("Card number is required"),
-
       yy: Yup.string()
         .required("Year is required")
         .test(
@@ -113,6 +112,7 @@ const App = () => {
             <Card sx={{ mr: "-10rem" }} values={watchAllFields} />
           </Stack>
         )}
+        {/*COMMENT: Tomei a liberdade de mudar um pouco como é exibido o cartão, para uma melhor experiência do usuário e demostar melhor meus conhecimentos de CSS*/}
         {isMobile && (
           <Stack justifyContent="end" height="100%" alignItems="center">
             <Card
@@ -142,6 +142,7 @@ const App = () => {
               )}
               {completed && (
                 <Stack alignItems="center">
+                  {/*COMMENT: Usei os SVG como componentes para uma melhor estilização e organização do código*/}
                   <IconCompleted />
                   <Typography
                     color="primary"

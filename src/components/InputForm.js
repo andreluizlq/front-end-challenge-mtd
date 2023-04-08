@@ -50,6 +50,7 @@ const InputForm = forwardRef(
 
     return (
       <>
+        {/*COMMENT: Não utilizei todas as variantes desenvolvidas para o componente, entretanto deixei salvo no código para demostrar melhor meus conheciemntos na criação de componentes genéricos*/}
         {(!!inputValue || focused) && (
           <Typography variant="subtitle2" color="primary">
             {label}
