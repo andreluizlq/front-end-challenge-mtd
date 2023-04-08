@@ -1,7 +1,7 @@
 # Customer registration 
 Front-end challenge passed by the company mtd. 
 
-![alt text](https://github.com/andreluizlq/front-end-challenge-mtd/blob/master/public/testeImg.png)
+![alt text](https://github.com/andreluizlq/front-end-challenge-mtd/blob/master/public/testeImg.PNG)
 
 # Tecnologies
 
