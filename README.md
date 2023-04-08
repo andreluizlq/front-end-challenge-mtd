@@ -31,4 +31,5 @@ $ npm start
 ```
 
 The comments are marked as "COMMENT" inside the code, for a better explanation of what was done.
+
 The app will be available for access on your browser at http://localhost:3000
