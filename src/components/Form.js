@@ -1,67 +1,17 @@
-import { useForm, Controller } from "react-hook-form";
-import LoadingButton from "@mui/lab/LoadingButton";
+import { Controller } from "react-hook-form";
 import { Stack, Grid } from "@mui/material";
 import LabelFields from "./LabelFields";
-import { enqueueSnackbar } from "notistack";
-import { useState } from "react";
 import InputForm from "./InputForm";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
 
-const Form = () => {
-  const FormSchema = Yup.object()
-    .shape({
-      name: Yup.string().required("Name is required"),
-      number: Yup.string()
-        .min(19, "Card number requires 16 digits.")
-        .required("Card number is required"),
-      cvc: Yup.string()
-        .min(3, "Requires 3 digits.")
-        .required("CVC is mandatory"),
-    })
-    .required();
-
-  const [loading, setLoading] = useState(false);
-  const { control, handleSubmit, reset } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(FormSchema),
-    defaultValues: {
-      name: "",
-      number: "",
-      MM: "",
-      YY: "",
-      cvc: "",
-    },
-  });
-
-  const onSubmit = (values) => {
-    setLoading(true);
-    setTimeout(() => {
-      if (values) {
-        setLoading(true);
-        reset({
-          name: "",
-          number: "",
-          MM: "",
-          YY: "",
-          cvc: "",
-        });
-        setLoading(false);
-        enqueueSnackbar("Cadastrado com sucesso", {
-          variant: "success",
-        });
-      }
-    }, 1000);
-  };
-
+const Form = ({ methods, handleOnFocus, handleOnBlur }) => {
   return (
-    <Stack component="form" onSubmit={handleSubmit(onSubmit)}>
+    <Stack>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <LabelFields title="CARDHOLDER NAME" />
           <Controller
             name="name"
-            control={control}
+            control={methods.control}
             rules={{ required: true }}
             render={({ field, fieldState: { error } }) => (
               <InputForm
@@ -80,11 +30,10 @@ const Form = () => {
           <LabelFields title="CARD NUMBER" />
           <Controller
             name="number"
-            control={control}
+            control={methods.control}
             rules={{ required: true }}
             render={({ field, fieldState: { error } }) => (
               <>
-                {console.log(error)}
                 <InputForm
                   {...field}
                   fullWidth
@@ -102,10 +51,10 @@ const Form = () => {
         <Grid item xs={6}>
           <LabelFields title="EXP. DATE (MM/YY)" />
           <Stack flexDirection="row">
-            <Grid xs={6} mr="12px">
+            <Grid item xs={6} mr="12px">
               <Controller
-                name="MM"
-                control={control}
+                name="mm"
+                control={methods.control}
                 rules={{ required: true }}
                 render={({ field, fieldState: { error } }) => (
                   <InputForm
@@ -116,26 +65,26 @@ const Form = () => {
                     placeholder="MM"
                     error={Boolean(error)}
                     helperText={error?.message}
-                    inputProps={{ maxLength: 30 }}
+                    inputProps={{ maxLength: 2 }}
                   />
                 )}
               />
             </Grid>
-            <Grid xs={6}>
+            <Grid item xs={6}>
               <Controller
-                name="YY"
-                control={control}
+                name="yy"
+                control={methods.control}
                 rules={{ required: true }}
                 render={({ field, fieldState: { error } }) => (
                   <InputForm
                     {...field}
                     fullWidth
-                    mask="9999"
+                    mask="99"
                     size="small"
                     placeholder="YY"
                     error={Boolean(error)}
                     helperText={error?.message}
-                    inputProps={{ maxLength: 30 }}
+                    inputProps={{ maxLength: 2 }}
                   />
                 )}
               />
@@ -146,7 +95,7 @@ const Form = () => {
           <LabelFields title="CVC" />
           <Controller
             name="cvc"
-            control={control}
+            control={methods.control}
             rules={{ required: true }}
             render={({ field, fieldState: { error } }) => (
               <InputForm
@@ -155,24 +104,14 @@ const Form = () => {
                 mask="999"
                 placeholder="e.g. 523"
                 size="small"
+                onFocus={handleOnFocus}
+                onBlur={handleOnBlur}
                 error={Boolean(error)}
                 helperText={error?.message}
                 inputProps={{ maxLength: 30 }}
               />
             )}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <LoadingButton
-            loading={loading}
-            variant="contained"
-            size="large"
-            type="submit"
-            fullWidth
-            sx={{ textTransform: "capitalize" }}
-          >
-            Confirm
-          </LoadingButton>
         </Grid>
       </Grid>
     </Stack>

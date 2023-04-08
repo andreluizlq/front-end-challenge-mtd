@@ -1,8 +1,8 @@
 const CodCard = () => {
   return (
     <svg
-      width="134"
-      height="20"
+      width="200"
+      height="28"
       viewBox="0 0 134 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
